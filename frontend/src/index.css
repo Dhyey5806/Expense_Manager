@@ -1,0 +1,92 @@
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 171 100% 96%;
+    --foreground: 172 66% 15%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 172 66% 15%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 172 66% 15%;
+
+    --primary: 171 70% 40%;
+    --primary-foreground: 210 40% 98%;
+
+    --secondary: 262 83% 65%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 171 20% 92%;
+    --muted-foreground: 172 30% 30%;
+
+    --accent: 171 40% 90%;
+    --accent-foreground: 172 66% 15%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 171 20% 85%;
+    --input: 171 20% 85%;
+    --ring: 171 70% 40%;
+
+    --radius: 0.75rem;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+}
+
+@layer utilities {
+  .animated-underline {
+    @apply relative after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-0 after:bg-expense-primary after:transition-all after:duration-300 hover:after:w-full;
+  }
+  
+  .animate-bounce-gentle {
+    animation: bounce 1s ease-in-out infinite;
+  }
+  
+  @keyframes bounce {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-5px);
+    }
+  }
+  
+  .logo-em {
+    @apply relative font-bold text-expense-primary;
+  }
+  
+  .logo-em::before {
+    content: "E";
+    @apply absolute top-0 left-0 text-expense-primary opacity-70;
+    clip-path: polygon(0 0, 50% 0, 50% 100%, 0% 100%);
+  }
+  
+  .logo-em::after {
+    content: "M";
+    @apply absolute top-0 left-[0.7em] text-expense-secondary opacity-70;
+    clip-path: polygon(50% 0, 100% 0, 100% 100%, 50% 100%);
+  }
+
+  .expense-card-hover {
+    @apply transition-all duration-300 hover:shadow-lg hover:-translate-y-1;
+  }
+  
+  .page-container {
+    @apply container mx-auto px-4 py-6 animate-fade-in;
+  }
+}
